@@ -242,7 +242,7 @@ En la segunda parte intentaré resolver las siguientes preguntas de análisis
 - ¿Cuales son los equipos que más partidos ganaron?
 - ¿En que regiones se encuentran?
 
-Con esto podemos ver los primeros 10 equipos que ganaron más partidos, ahora bien, da para pensar ya que al ser un torneo pasado, ya se saben los resultados, el ganador fue "TEAM BDS" que está en tercer lugar con más partidos, y el que está en segundo lugar "TOKYO VERDY ESPORTS", en el general quedó solo entre los 20 mejores, por lo tanto puede ser que no tenga mucha relación si lo vemos desde ese punto de vista. Ahora bien, se podría hacer el mismo análisis separado por región
+Al realizar el análisis de forma general y ver los primeros 10 equipos que ganaron más partidos, da para pensar ya que al ser un torneo pasado, ya se saben los resultados, el ganador fue "TEAM BDS" que está en tercer lugar con más partidos ganados, y el que está en segundo lugar "TOKYO VERDY ESPORTS", en el general quedó solo entre los 20 mejores, por lo tanto puede ser que no tenga mucha relación si lo vemos desde ese punto de vista. Ahora bien, se podría hacer el mismo análisis separado por región
 
 ```text
 Resultados para la región: Oceania
