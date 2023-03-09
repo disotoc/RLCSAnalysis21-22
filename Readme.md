@@ -196,10 +196,10 @@ Inicialmente hay 3 hipótesis para las que podemos buscar respuestas:
 ![Partidos ganados por color](assets/PartidosGanadosColor.png)
 
 - ¿Hay una relación entre las salvadas o salvadas épicas realizadas y los partidos ganados?
-![Histograma relación salvadas y partidos ganados o perdidos](assets\HistogramaSalvadasGanadosPerdidos.png)
+![Histograma relación salvadas y partidos ganados o perdidos](assets/HistogramaSalvadasGanadosPerdidos.png)
 
 - ¿Se podría decir que mientras más distancia se recorre, más boost se utiliza?
-![Relación entre boost recolectado y distancia recorrida](assets\RelaciónBoostDistancia.png)
+![Relación entre boost recolectado y distancia recorrida](assets/RelaciónBoostDistancia.png)
 
 ### Conclusiones preliminares
 En base al primer gráfico podemos concluir que hay una clara inclinación que gane la esquina azul, sin embargo no podemos asegurar que no se deba a factures externos, de todas maneras se podría utilizar este parámetro para el modelo de datos que se creará.
@@ -227,13 +227,13 @@ Se puede apreciar que la diferencia es muy marginal como para considerarla, por 
 ---
 En cuanto a lo siguiente, se intentará hacer un diagrama de dispersión que muestre si hay una relación entre los partidos perdidos y las salvadas
 
-![Diagrama de dispersión entre salvadas y partidos perdidos](assets\DiagramaSalvadasPerdidos.png)
+![Diagrama de dispersión entre salvadas y partidos perdidos](assets/DiagramaSalvadasPerdidos.png)
 
 Gracias a este gráfico podemos decir que no hay correlación entre los partidos perdidos y las salvadas realizadas, por lo tanto, se puede descartar.
 
 ---
 Por último, por el tercer gráfico donde se apreció una relación entre el boost recolectado y la distancia recorrida, se buscarán outliers con un gráfico de cajas y bigote
-![Diagrama de dispersión entre salvadas y partidos perdidos](assets\GráficosOutliersBoost.png)
+![Diagrama de dispersión entre salvadas y partidos perdidos](assets/GráficosOutliersBoost.png)
 
 Gracias a estos últimos gráficos se puede apreciar que en ambos casos la concentración mayor en outliers superiores. Ahora bien, considerando que en ambas variables esto se repite  lo podríamos clasificar como outliers colectivos y no necesariamente una suciedad en la base, por lo tanto podría abrir la posibilidad a otros fenómenos que se estudiarán más adelante
 
