@@ -189,6 +189,7 @@ demo_taken
 score
 winner
 ```
+Esta limpieza se realiza en el archivo **datasets.py** que se utilizará como módulo con el fin de limpiar todos los datos y cargarlos en archivos por separado
 
 ## Hipótesis preliminar
 Inicialmente hay 3 hipótesis para las que podemos buscar respuestas:
