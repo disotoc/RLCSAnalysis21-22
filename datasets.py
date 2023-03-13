@@ -47,7 +47,33 @@ def games_by_teams_df():
 
 def matches_by_players():
     matches_by_players_df = pd.read_csv(io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("matches_by_players.csv").decode("utf-8")), low_memory=False)
-    return matches_by_players_df
+    matches_by_players_df_fil = matches_by_players_df.filter(['match_id',
+                                                          'team_id',
+                                                          'team_region',
+                                                          'player_id',
+                                                          'player_tag',
+                                                          'core_shots',
+                                                          'core_goals',
+                                                          'core_saves'
+                                                          'core_assists',
+                                                          'core_score',
+                                                          'boost_amount_collected',
+                                                          'boost_amount_stolen',
+                                                          'boost_time_zero_boost',
+                                                          'movement_total_distance',
+                                                          'movement_time_supersonic_speed',
+                                                          'movement_time_boost_speed',
+                                                          'movement_time_slow_speed',
+                                                          'movement_time_ground',
+                                                          'movement_time_low_air',
+                                                          'movement_time_high_air',
+                                                          'positioning_time_defensive_half',
+                                                          'positioning_time_offensive_half',
+                                                          'demo_inflicted',
+                                                          'demo_taken',
+                                                          'score',
+                                                          'winner'])
+    return matches_by_players_df_fil
 
 def games_by_players_df():
     games_by_players_df = pd.read_csv(io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("games_by_players.csv").decode("utf-8")), low_memory=False)
