@@ -1,19 +1,19 @@
-# Proyecto predicción partidos Rocket League
-Rocket League es un videojuego que combina elementos de futbol y carreras de autos, en pocas palabras es un juego donde se debe jugar futbol (metiendo goles en el arco contrario) con autos que al ser propulsados por nitro pueden incluso volar volar.
-Hay distintos modos de juego online y offline, pero este proyecto se centrará en el modo principal en e-sport que es en equipos de 3 vs 3
+# Proyecto predicción de partidos Rocket League
+Rocket League es un videojuego que combina elementos de futbol y carreras de autos, en pocas palabras es un juego donde se debe jugar futbol (metiendo goles en el arco contrario) con autos que al ser propulsados por nitro pueden incluso volar.
+Hay distintos modos de juego online y offline, pero este proyecto se centrará en el modo principal en e-sport que es en equipos de 3 vs. 3
 
 Este proyecto está enfocado en realizar un análisis predictivo para saber los ganadores de partidos y resolver un problema de **clasificación** con uno o más dataset extraídos del siguiente link
 Link dataset: https://www.kaggle.com/datasets/dylanmonfret/rlcs-202122
 
-Ahora bien, los dataset son datos recogidos de una página especializada en videojuegos competitivos (https://liquipedia.net/rocketleague), por lo tanto en un futuro quizás sea extraída la información por medio de técnicas de web scraping
+Ahora bien, los dataset son datos recogidos de una página especializada en videojuegos competitivos (https://liquipedia.net/rocketleague), por lo tanto, en un futuro quizás sea extraída la información por medio de técnicas de web scraping
 
 Primero que todo es importante mencionar de manera general como son los torneos de este e-sport, para explicar se utilizará un pequeño glosario.
 - _Equipo_: Cada equipo está conformado por 3 integrantes, existen algunos que tienen 4 equipos para tener un recambio, pero poco común.
-- _Partido_: Cada partido dura 5 minutos, por cada gol realizado se hace una pequeña pausa en el tiempo mientras se ve una repetición del gol, también se pausará en caso que alguno de los dos equipos tenga un inconveniente técnico. En el caso de estar empatados al término de los 5 minutos habrá un overtime que terminará solo cuando uno de los 2 equipos haga otro gol.
-- _Encuentro_: Cada encuentro está compuesto de un máximo de 5 partidos, es decir, el primer equipo que gana 3 partidos gana el encuentro. Esto cambia en las fases finales de cada campeonato que se juegan en formato eliminatoria, y pasan a tener un máximo de 7 partidos, es decir, el primero que gana 4 partidos gana el encuentro.
+- _Partido_: Cada partido dura 5 minutos, por cada gol realizado se hace una pequeña pausa en el tiempo mientras se ve una repetición del gol, también se pausará en caso de que alguno de los dos equipos tenga un inconveniente técnico. En el caso de estar empatados al término de los 5 minutos habrá un overtime que terminará solo cuando uno de los 2 equipos haga otro gol.
+- _Encuentro_: Cada encuentro está compuesto de un máximo de 5 partidos, es decir, el primer equipo que gana 3 partidos gana el encuentro. Esto cambia en las fases finales de cada campeonato que se juegan en formato eliminatorio, y pasan a tener un máximo de 7 partidos, es decir, el primero que gana 4 partidos gana el encuentro.
 - _Regionales_: En cada temporada se juegan encuentros entre equipos de cada región, y luego de diferentes fases hay un equipo ganador acompañado de un premio monetario. Cada encuentro ganado va sumando puntos para clasificar a las siguientes fases, mientras más alta sea la fase que se llegue en el campeonato, más puntos son entregados.
 - _Major_: Luego de 3 regionales hay un campeonato internacional, que se clasifican los equipos que tengan más puntos en cada región, este torneo se disputa con 16 equipos en total (nota: no es necesario ser ganador de regional para llegar a este torneo, y también el hecho de ser ganador no garantiza llegar al torneo, todo dependerá del desempeño en los 3 regionales). El formato de este torneo es similar a los regionales, la diferencia es que es internacional, y los puntos y dinero ganado son mayores.
-- _Mundial_: Cada temporada (usualmente anual), luego de 3 Major, hay un campeonato similar que clasifican los equipos que tengan más puntos en cada región, y se disputa con 24 equipos en total. Luego de este evento se reinician los puntos, por lo tanto en estos encuentros no juntan más, sin embargo el premio monetario es mayor.
+- _Mundial_: Cada temporada (usualmente anual), luego de 3 Major, hay un campeonato similar que clasifican los equipos que tengan más puntos en cada región, y se disputa con 24 equipos en total. Luego de este evento se reinician los puntos, por lo tanto, en estos encuentros no juntan más; sin embargo, el premio monetario es mayor.
 
 
 La información contenida en los diferentes datasets es la siguiente:
@@ -26,7 +26,7 @@ La información contenida en los diferentes datasets es la siguiente:
 
 
 # Análisis preliminar
-A modo exploratorio se utilizará el df **matches_by_teams_df** ya que preliminarmente es el que puede tener información más relevante al ser el que guarda lo referente a los encuentros (no a los partidos individuales), sin embargo es posible utilizar otro en base a las necesidades.
+A modo exploratorio se utilizará el df **matches_by_teams_df**, ya que preliminarmente es el que puede tener información más relevante al ser el que guarda lo referente a los encuentros (no a los partidos individuales), sin embargo, es posible utilizar otro basándonos en las necesidades.
 
 ## Columnas y tipos (matches_by_teams_df.dtypes)
 ```text
@@ -155,12 +155,12 @@ La siguiente línea de código, se divide en lo siguiente:
 nulos = matches_by_teams_df[matches_by_teams_df.isnull().any(1)]
 ```
 
-Al verificar manualmente algunos de las filas que están con datos nulos, realmente no existen en la web donde está la base desde donde se realizaría el web scraping, ahora bien, en general en cada columna representaría un 18% (en las que tienen más nulos) que podría afectar en el modelo, por lo tanto, dependiendo de la relación principalmente se rellenarán con la mediana, o de lo contrario se eliminarían
+Al verificar manualmente algunas de las filas que están con datos nulos, realmente no existen en la web donde está la base desde donde se realizaría el web scraping, ahora bien, en general en cada columna representaría un 18% (en las que tienen más nulos) que podría afectar en el modelo, por lo tanto, dependiendo de la relación principalmente se rellenarán con la mediana, o de lo contrario se eliminarían
 
 ## Limpieza de dataset
 Si bien, el dataset cuenta con muchas columnas que se pueden analizar, hay algunas que muestran porcentajes o promedios y realmente no se utilizarían en el modelo y se eliminarán.
 Por otro lado, hay columnas que son la suma de otras 2 que muestran un poco más en detalle, por ejemplo, "boost_amount_collected" es la suma de "boost_amount_collected_big" y "boost_amount_collected_small". Si bien con el detalle se podrían hacer un análisis más completo y en detalle con estos datos, realmente no influirían tanto en este modelo, por lo tanto, solo se quedarán las columnas con el total.
-En base a lo anteriormente mencionado, junto con otros factores, se optará por dejar solo las siguientes columnas.
+Con base en lo anteriormente mencionado, junto con otros factores, se optará por dejar solo las siguientes columnas.
 ```text
 match_id (esto solo se incluirá en el caso que se deba buscar un dato en otro df o en la web)
 color
@@ -192,7 +192,7 @@ winner
 Esta limpieza se realiza en el archivo **datasets.py** que se utilizará como módulo con el fin de limpiar todos los datos y cargarlos en archivos por separado
 
 ## Hipótesis preliminar
-Inicialmente hay 3 hipótesis para las que podemos buscar respuestas:
+Inicialmente, hay 3 hipótesis para las que podemos buscar respuestas:
 - ¿Hay alguna inclinación en cuanto a los partidos ganados por esquina (azul/naranja) dada?
 ![Partidos ganados por color](assets/PartidosGanadosColor.png)
 
@@ -236,14 +236,14 @@ Gracias a este gráfico podemos decir que no hay correlación entre los partidos
 Por último, por el tercer gráfico donde se apreció una relación entre el boost recolectado y la distancia recorrida, se buscarán outliers con un gráfico de cajas y bigote
 ![Diagrama de dispersión entre salvadas y partidos perdidos](assets/GráficosOutliersBoost.png)
 
-Gracias a estos últimos gráficos se puede apreciar que en ambos casos la concentración mayor en outliers superiores. Ahora bien, considerando que en ambas variables esto se repite  lo podríamos clasificar como outliers colectivos y no necesariamente una suciedad en la base, por lo tanto podría abrir la posibilidad a otros fenómenos que se estudiarán más adelante
+Gracias a estos últimos gráficos se puede apreciar que en ambos casos la concentración mayor en outliers superiores. Ahora bien, considerando que en ambas variables esto se repite lo podríamos clasificar como outliers colectivos y no necesariamente una suciedad en la base, por lo tanto, podría abrir la posibilidad a otros fenómenos que se estudiarán más adelante
 
 # Parte 2
 En la segunda parte intentaré resolver las siguientes preguntas de análisis
-- ¿Cuales son los equipos que más partidos ganaron?
-- ¿En que regiones se encuentran?
+- ¿Cuáles son los equipos que más partidos ganaron?
+- ¿En qué regiones se encuentran?
 
-Al realizar el análisis de forma general y ver los primeros 10 equipos que ganaron más partidos, da para pensar ya que al ser un torneo pasado, ya se saben los resultados, el ganador fue "TEAM BDS" que está en tercer lugar con más partidos ganados, y el que está en segundo lugar "TOKYO VERDY ESPORTS", en el general quedó solo entre los 20 mejores, por lo tanto puede ser que no tenga mucha relación si lo vemos desde ese punto de vista. Ahora bien, se podría hacer el mismo análisis separado por región
+Al realizar el análisis de forma general y ver los primeros 10 equipos que ganaron más partidos, da para pensar, ya que al ser un torneo pasado, ya se saben los resultados, el ganador fue "TEAM BDS" que está en tercer lugar con más partidos ganados, y el que está en segundo lugar "TOKYO VERDY ESPORTS", en el general quedó solo entre los 20 mejores, por lo tanto, puede ser que no tenga mucha relación si lo vemos desde ese punto de vista. Ahora bien, se podría hacer el mismo análisis separado por región
 
 ```text
 Resultados para la región: Oceania
