@@ -1,24 +1,36 @@
+"""
+Este módulo se utilizará para extraer cada dataframe y realizar la limpieza
+"""
+
 import io
 import zipfile
 import pandas as pd
 
 
 def main():
-    main_df = pd.read_csv(io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
-                                      .read("main.csv")
-                                      .decode("utf-8")))
+    """Crear un objeto ZipFile que extraer el dataframe 'main' """
+    main_df = pd.read_csv(io.StringIO(
+                zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
+                .read("main.csv")
+                .decode("utf-8")))
     return main_df
 
 
 def players_db():
-    players_db_df = pd.read_csv(
-        io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("players_db.csv").decode("utf-8")))
+    """Crear un objeto ZipFile que extraer el dataframe 'players' """
+    players_db_df = pd.read_csv(io.StringIO(
+                    zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
+                    .read("players_db.csv")
+                    .decode("utf-8")))
     return players_db_df
 
 
 def matches_by_teams():
-    matches_by_teams_df = pd.read_csv(
-        io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("matches_by_teams.csv").decode("utf-8")))
+    """Crear un objeto ZipFile que extraer el dataframe 'matches_by_team' """
+    matches_by_teams_df = pd.read_csv(io.StringIO(
+                            zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
+                            .read("matches_by_teams.csv")
+                            .decode("utf-8")))
     # Filtro para dejar solo las columnas necesarias
     matches_by_teams_df_fil = matches_by_teams_df.filter(['color',
                                                           'team_id',
@@ -49,15 +61,20 @@ def matches_by_teams():
 
 
 def games_by_teams_df():
-    games_by_teams_df = pd.read_csv(
-        io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("games_by_teams.csv").decode("utf-8")))
-    return games_by_teams_df
+    """Crear un objeto ZipFile que extraer el dataframe 'games_by_teams' """
+    games_by_teams = pd.read_csv(io.StringIO(
+                        zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
+                        .read("games_by_teams.csv")
+                        .decode("utf-8")))
+    return games_by_teams
 
 
 def matches_by_players():
-    matches_by_players_df = pd.read_csv(
-        io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("matches_by_players.csv").decode("utf-8")),
-        low_memory=False)
+    """Crear un objeto ZipFile que extraer el dataframe 'matches_by_players' """
+    matches_by_players_df = pd.read_csv(io.StringIO(
+                                        zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
+                                        .read("matches_by_players.csv")
+                                        .decode("utf-8")),low_memory=False)
     matches_by_players_df_fil = matches_by_players_df.filter(['match_id',
                                                               'team_id',
                                                               'team_region',
@@ -88,16 +105,9 @@ def matches_by_players():
 
 
 def games_by_players_df():
-    games_by_players_df = pd.read_csv(
-        io.StringIO(zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip").read("games_by_players.csv").decode("utf-8")),
-        low_memory=False)
-    return games_by_players_df
-
-
-""" with zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip") as z:
-    games_by_players_df = pd.read_csv(io.StringIO(z.read("games_by_players.csv").decode("utf-8")), low_memory=False) ok
-    games_by_teams_df = pd.read_csv(io.StringIO(z.read("games_by_teams.csv").decode("utf-8"))) ok
-    main_df = pd.read_csv(io.StringIO(z.read("main.csv").decode("utf-8"))) ok
-    matches_by_players_df = pd.read_csv(io.StringIO(z.read("matches_by_players.csv").decode("utf-8"))) ok
-    matches_by_teams_df = pd.read_csv(io.StringIO(z.read("matches_by_teams.csv").decode("utf-8")))
-    players_db_df = pd.read_csv(io.StringIO(z.read("players_db.csv").decode("utf-8"))) """
+    """Crear un objeto ZipFile que extraer el dataframe 'games_by_players_df' """
+    games_by_players = pd.read_csv(io.StringIO(
+                                    zipfile.ZipFile("dataset/RLCS 2021-22 Dataset.zip")
+                                    .read("games_by_players.csv")
+                                    .decode("utf-8")), low_memory=False)
+    return games_by_players
