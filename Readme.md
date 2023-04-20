@@ -18,10 +18,10 @@ El análisis exploratorio y limpieza de datasets individuales se explican en los
 
 ---
 # Análisis preliminar
-A modo exploratorio se utilizará el df **matches_by_teams_df**, ya que preliminarmente es el que puede tener información más relevante al ser el que guarda lo referente a los encuentros (no a los partidos individuales), sin embargo, es posible utilizar otro basándonos en las necesidades.
+A modo exploratorio se utilizará el dataset de  **[matches_by_teams](datasets/matches_by_teams.md)**, ya que preliminarmente es el que puede tener información más relevante al ser el que guarda lo referente a los encuentros (no a los partidos individuales), sin embargo, es posible utilizar otro basándonos en las necesidades.
 
 ## Hipótesis preliminar
-Inicialmente, hay 3 hipótesis para las que podemos buscar respuestas:
+Inicialmente, hay 3 hipótesis para las que podemos buscar respuestas y se responderán con algunos gráficos:
 - ¿Hay alguna inclinación en cuanto a los partidos ganados por esquina (azul/naranja) dada?
 ![Partidos ganados por color](assets/PartidosGanadosColor.png)
 
@@ -47,10 +47,10 @@ En primer lugar solo para verificar que tanto influyen los nulos en la agrupaci�
 nulos.groupby('winner')[['core_saves']].sum()
 ```
 
-| core_saves | winner |
-| --- | --- |
-| False	| 566.0 |
-| True | 536.0 |
+| `core_saves` | `winner` |
+| :----------: | -------: |
+| False        |    566.0 |
+| True         |    536.0 |
 
 Se puede apreciar que la diferencia es muy marginal como para considerarla, por lo tanto, el primer gráfico se consideraría correcto
 
