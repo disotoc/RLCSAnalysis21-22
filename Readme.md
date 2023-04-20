@@ -7,7 +7,7 @@ Link dataset: https://www.kaggle.com/datasets/dylanmonfret/rlcs-202122
 
 Ahora bien, los dataset son datos recogidos de una página especializada en videojuegos competitivos (https://liquipedia.net/rocketleague), por lo tanto, en un futuro quizás sea extraída la información por medio de técnicas de web scraping
 
-- [Glosario](Glosario.md)
+- [Glosario](glosario.md)
 - [Descripción datasets](datasets/datasets.md)
 
 ---
