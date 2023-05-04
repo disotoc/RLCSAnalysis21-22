@@ -6,13 +6,13 @@ import io
 import zipfile
 import pandas as pd
 
-folder_path = "datasets/RLCS 2021-22 Dataset.zip"
+FOLDER_PATH = "datasets/RLCS 2021-22 Dataset.zip"
 
 
 def main():
     """Crear un objeto ZipFile que extraer el dataframe 'main' """
     main_df = pd.read_csv(io.StringIO(
-                zipfile.ZipFile(folder_path)
+                zipfile.ZipFile(FOLDER_PATH)
                 .read("main.csv")
                 .decode("utf-8")))
     return main_df
@@ -21,7 +21,7 @@ def main():
 def players_db():
     """Crear un objeto ZipFile que extraer el dataframe 'players' """
     players_db_df = pd.read_csv(io.StringIO(
-                    zipfile.ZipFile(folder_path)
+                    zipfile.ZipFile(FOLDER_PATH)
                     .read("players_db.csv")
                     .decode("utf-8")))
     return players_db_df
@@ -30,7 +30,7 @@ def players_db():
 def matches_by_teams():
     """Crear un objeto ZipFile que extraer el dataframe 'matches_by_team' """
     matches_by_teams_df = pd.read_csv(io.StringIO(
-                            zipfile.ZipFile(folder_path)
+                            zipfile.ZipFile(FOLDER_PATH)
                             .read("matches_by_teams.csv")
                             .decode("utf-8")))
     # Filtro para dejar solo las columnas necesarias
@@ -65,7 +65,7 @@ def matches_by_teams():
 def games_by_teams_df():
     """Crear un objeto ZipFile que extraer el dataframe 'games_by_teams' """
     games_by_teams = pd.read_csv(io.StringIO(
-                        zipfile.ZipFile(folder_path)
+                        zipfile.ZipFile(FOLDER_PATH)
                         .read("games_by_teams.csv")
                         .decode("utf-8")))
     return games_by_teams
@@ -74,7 +74,7 @@ def games_by_teams_df():
 def matches_by_players():
     """Crear un objeto ZipFile que extraer el dataframe 'matches_by_players' """
     matches_by_players_df = pd.read_csv(io.StringIO(
-                                        zipfile.ZipFile(folder_path)
+                                        zipfile.ZipFile(FOLDER_PATH)
                                         .read("matches_by_players.csv")
                                         .decode("utf-8")),low_memory=False)
     matches_by_players_df_fil = matches_by_players_df.filter(['match_id',
@@ -109,7 +109,7 @@ def matches_by_players():
 def games_by_players_df():
     """Crear un objeto ZipFile que extraer el dataframe 'games_by_players_df' """
     games_by_players = pd.read_csv(io.StringIO(
-                                    zipfile.ZipFile(folder_path)
+                                    zipfile.ZipFile(FOLDER_PATH)
                                     .read("games_by_players.csv")
                                     .decode("utf-8")), low_memory=False)
     return games_by_players
