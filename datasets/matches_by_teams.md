@@ -1,5 +1,5 @@
-# Análisis preliminar
-Este dataset puede tener información más relevante al ser el que guarda lo referente a los encuentros (no a los partidos individuales)([Glosario](../glosario.md)).
+# Descripción
+Este dataset puede tener información más relevante al ser el que guarda lo referente a los encuentros de los equipos (no a los partidos individuales)([Ver glosario](../glosario.md)).
 
 ## Columnas y tipos (matches_by_teams_df.dtypes)
 ```text
@@ -128,7 +128,7 @@ La siguiente línea de código, se divide en lo siguiente:
 nulos = matches_by_teams_df[matches_by_teams_df.isnull().any(1)]
 ```
 
-Al verificar manualmente algunas de las filas que están con datos nulos, realmente no existen en la web donde está la base desde donde se realizaría el web scraping, ahora bien, en general en cada columna representaría un 18% (en las que tienen más nulos) que podría afectar en el modelo, por lo tanto, dependiendo de la relación principalmente se rellenarán con la mediana, o de lo contrario se eliminarían
+Al verificar manualmente algunas de las filas que están con datos nulos, realmente los datos no existen en la web donde está la base desde donde se realizaría el web scraping, ahora bien, en general en cada columna representaría un 18% (en las que tienen más nulos) que podría afectar en el modelo, por lo tanto, dependiendo de la relación principalmente se rellenarán con la mediana o moda, o de lo contrario se eliminarían
 
 ## Limpieza de dataset
 Si bien, el dataset cuenta con muchas columnas que se pueden analizar, hay algunas que muestran porcentajes o promedios y realmente no se utilizarían en el modelo y se eliminarán.
@@ -165,22 +165,22 @@ winner
 
 Esta limpieza se realiza en el archivo [datasets.py](../datasets.py) que se utilizará como módulo con el fin de limpiar todos los datos y cargarlos en archivos por separado
 
-# Análisis preliminar
-A modo exploratorio se utilizará el dataset de  **[matches_by_teams](datasets/matches_by_teams.md)**, ya que preliminarmente es el que puede tener información más relevante al ser el que guarda lo referente a los encuentros (no a los partidos individuales), sin embargo, es posible utilizar otro basándonos en las necesidades.
+# Análisis
+En un comienzo se realizarán diferentes hipótesis y comprobaciones de las mismas para poder conocer un poco más el dataset.
 
-## Hipótesis preliminar
+## Hipótesis preliminares
 Inicialmente, hay 3 hipótesis para las que podemos buscar respuestas y se responderán con algunos gráficos:
 - ¿Hay alguna inclinación en cuanto a los partidos ganados por esquina (azul/naranja) dada?
-![Partidos ganados por color](assets/PartidosGanadosColor.png)
+![Partidos ganados por color](/assets/PartidosGanadosColor.png)
 
 - ¿Hay una relación entre las salvadas o salvadas épicas realizadas y los partidos ganados?
-![Histograma relación salvadas y partidos ganados o perdidos](assets/HistogramaSalvadasGanadosPerdidos.png)
+![Histograma relación salvadas y partidos ganados o perdidos](/assets/HistogramaSalvadasGanadosPerdidos.png)
 
 - ¿Se podría decir que mientras más distancia se recorre, más boost se utiliza?
-![Relación entre boost recolectado y distancia recorrida](assets/RelaciónBoostDistancia.png)
+![Relación entre boost recolectado y distancia recorrida](/assets/RelaciónBoostDistancia.png)
 
-### Conclusiones preliminares
-En base al primer gráfico podemos concluir que hay una clara inclinación que gane la esquina azul, sin embargo no podemos asegurar que no se deba a factures externos, de todas maneras se podría utilizar este parámetro para el modelo de datos que se creará.
+## Conclusiones preliminares
+En base al primer gráfico podemos concluir que hay una clara inclinación que gane la esquina azul, sin embargo no podemos asegurar que no se deba a factores externos, de todas maneras se podría utilizar este parámetro para el modelo de datos que se creará.
 
 Por otro lado, con el segundo gráfico por ahora, no podemos concluir que hay una relación directa o indirecta en cuanto a los partidos ganados o perdidos versus la cantidad de salvadas. De todas maneras, hay frecuencias más altas en los partidos perdidos, esto puede deberse a que realmente hubo más salvadas porque también hubo más defensa, por lo tanto, se podría decir que, la cantidad de partidos perdidos aumenta mientras más salvadas haya porque la mayor parte del tiempo se defendieron de los ataques del oponente.
 
@@ -189,6 +189,8 @@ Por último, gracias al tercer gráfico podemos ver una clara correlación entre
 Para seguir con la exploración de los datos, se dará una nueva visión para todos los gráficos, realmente esto se hará para confirmar que tan correcto podrían estar
 
 ---
+
+### Comprobaciones primeras conclusiones
 En primer lugar solo para verificar que tanto influyen los nulos en la agrupación del primer gráfico, se generará otra agrupación, pero del df "nulos" y así se verá que tan diferentes pueden ser los datos
 
 ```python
@@ -205,13 +207,13 @@ Se puede apreciar que la diferencia es muy marginal como para considerarla, por 
 ---
 En cuanto a lo siguiente, se intentará hacer un diagrama de dispersión que muestre si hay una relación entre los partidos perdidos y las salvadas
 
-![Diagrama de dispersión entre salvadas y partidos perdidos](assets/DiagramaSalvadasPerdidos.png)
+![Diagrama de dispersión entre salvadas y partidos perdidos](/assets/DiagramaSalvadasPerdidos.png)
 
 Gracias a este gráfico podemos decir que no hay correlación entre los partidos perdidos y las salvadas realizadas, por lo tanto, se puede descartar.
 
 ---
 Por último, por el tercer gráfico donde se apreció una relación entre el boost recolectado y la distancia recorrida, se buscarán outliers con un gráfico de cajas y bigote
-![Diagrama de dispersión entre salvadas y partidos perdidos](assets/GráficosOutliersBoost.png)
+![Diagrama de dispersión entre salvadas y partidos perdidos](/assets/GráficosOutliersBoost.png)
 
 Gracias a estos últimos gráficos se puede apreciar que en ambos casos la concentración mayor en outliers superiores. Ahora bien, considerando que en ambas variables esto se repite lo podríamos clasificar como outliers colectivos y no necesariamente una suciedad en la base, por lo tanto, podría abrir la posibilidad a otros fenómenos que se estudiarán más adelante
 
@@ -220,7 +222,22 @@ En la segunda parte intentaré resolver las siguientes preguntas de análisis
 - ¿Cuáles son los equipos que más partidos ganaron?
 - ¿En qué regiones se encuentran?
 
-Al realizar el análisis de forma general y ver los primeros 10 equipos que ganaron más partidos, da para pensar, ya que al ser un torneo pasado, ya se saben los resultados, el ganador fue "TEAM BDS" que está en tercer lugar con más partidos ganados, y el que está en segundo lugar "TOKYO VERDY ESPORTS", en el general quedó solo entre los 20 mejores, por lo tanto, puede ser que no tenga mucha relación si lo vemos desde ese punto de vista. Ahora bien, se podría hacer el mismo análisis separado por región
+Al realizar el análisis de forma general y ver los primeros 10 equipos que ganaron más partidos los resultados son los siguientes:
+
+|    team_name           | winner |   team_region          |
+|------------------------|--------|------------------------|
+| G2 ESPORTS              |   62   | North America          |
+| TOKYO VERDY ESPORTS     |   60   | Asia-Pacific North     |
+| TEAM BDS                |   56   | Europe                 |
+| FURIA ESPORTS           |   56   | South America          |
+| PIRATES EXDEE           |   53   | Sub-Saharan Africa     |
+| NRG ESPORTS             |   51   | North America          |
+| TEAM FALCONS            |   50   | Middle East & North Africa |
+| RENEGADES               |   49   | Oceania                |
+| DETONATOR               |   48   | Asia-Pacific North     |
+| FAZE CLAN               |   47   | North America          |
+
+Los resultados dan a pensar que los primeros 2 equipos pueden ser los ganadores del torneo, sin embargo, ya que es un torneo pasado, ya se saben los resultados, el ganador fue "TEAM BDS" que está en tercer lugar con más partidos ganados, y el que está en segundo lugar "TOKYO VERDY ESPORTS", en el general quedó solo entre los 20 mejores, por lo tanto, puede ser que no tenga mucha relación si lo vemos desde ese punto de vista. Ahora bien, se podría hacer el mismo análisis separado por región
 
 ```text
 Resultados para la región: Oceania
@@ -349,3 +366,22 @@ Empty DataFrame
 Columns: [winner, team_name, team_region]
 Index: []
 ```
+
+Con esto podemos validar que los resultados si son distintos, probablemente se deba a la cantidad de equipos que hay en cada región sea distinta
+
+## Mapa de correlaciones
+Con el fin de ayudar un poco en la búsqueda de relaciones se generó un mapa de calor, en primer lugar se eliminaron todas las columnas con variables string y luego se tomaron todas las otras variables, el resultado es el siguiente:
+
+![Mapa de correlación](/assets/Corr_matches_by_team.png)
+
+Como el proyecto trata sobre una predicción de partidos ganados, la variable más importante para verificar es `winner`, y se alcanza a ver que tiene una gran relación con la variable `score`, esto tiene sentido ya que esta última mide la cantidad de partidos ganados en el encuentro, fuera de eso, también `core_goals` y `core_assists` también tienen una relación positiva que también hace mucho sentido al ser tanto los goles, como las asistencias, un factor determinante para ganar encuentros.
+
+Independiente de lo anterior, la variable principal tiene pocas correlaciones, esto se puede deber a que es una variable booleana, debido a esta razón se generó otro gráfico a parte donde se separan los partidos ganados y los partidos perdidos para ver las mismas correlaciones, los resultados son los siguientes:
+
+![Mapa de correlación](/assets/Corr_matches_by_team_winner.png)
+
+A simple viste se logran apreciar unos fenómenos que deberían ser investigados más en profundidad, y son:
+
+1. Los goles realizados tienen mayores correlaciones en los partidos perdidos, esto por lógica debería ser al revés.
+2. Al igual que el punto anterior, también las correlaciones en las asistencias son mayores en los partidos perdidos.
+3. Tanto las demoliciones realizadas tienen más correlaciones en los partidos ganados, esto tiene más sentido, en especial en las demoliciones realizadas, pero puede ser un factor determinante para el modelo de aprendizaje.
