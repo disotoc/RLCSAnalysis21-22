@@ -1,3 +1,4 @@
+![Logo Rocket League](assets/rocket-league-logo.png)
 # Proyecto predicción de partidos Rocket League
 Rocket League es un videojuego que combina elementos de futbol y carreras de autos, en pocas palabras es un juego donde se debe jugar futbol (metiendo goles en el arco contrario) con autos que al ser propulsados por nitro pueden incluso volar.
 Hay distintos modos de juego online y offline, pero este proyecto se centrará en el modo principal en e-sport que es en equipos de 3 vs. 3
