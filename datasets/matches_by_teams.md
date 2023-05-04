@@ -3,6 +3,8 @@ Este dataset puede tener información más relevante al ser el que guarda lo ref
 
 [Notebook con análisis](../team_analysis.ipynb)
 
+Este dataset tiene una dimensión de 10594 filas y 25 columnas
+
 ## Columnas y tipos (matches_by_teams_df.dtypes)
 ```text
 match_id                               object
