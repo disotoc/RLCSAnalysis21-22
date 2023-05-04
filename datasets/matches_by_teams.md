@@ -1,6 +1,8 @@
 # Descripción
 Este dataset puede tener información más relevante al ser el que guarda lo referente a los encuentros de los equipos (no a los partidos individuales)([Ver glosario](../glosario.md)).
 
+[Notebook con análisis](../team_analysis.ipynb)
+
 ## Columnas y tipos (matches_by_teams_df.dtypes)
 ```text
 match_id                               object
