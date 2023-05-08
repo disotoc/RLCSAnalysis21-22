@@ -4,3 +4,4 @@ Errores/
 __pycache__/
 columns.xlsx
 .idea/
+pandas_profiling/
