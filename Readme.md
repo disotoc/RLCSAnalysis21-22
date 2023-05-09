@@ -18,3 +18,5 @@ La limpieza y análisis por datasets separados son los siguientes:
 - [matches_by_players](datasets/matches_by_players.md)
 
 ---
+
+Si deseas ver una presentación de este proyecto, puedes revisarlo en [Google Drive](https://docs.google.com/presentation/d/1QegdHyBYc0xT62N5MxzHSMcvAFM0RhW-uezhPkkTVvM/edit?usp=sharing)
