@@ -18,5 +18,9 @@ La limpieza y análisis por datasets separados son los siguientes:
 - [matches_by_players](datasets/matches_by_players.md)
 
 ---
+Las pruebas utilizadas con modelos de machine learning están en los siguientes archivos
 
+- [team_classification](/team_analysis.ipynb)
+
+---
 Si deseas ver una presentación de este proyecto, puedes revisarlo en [Google Drive](https://docs.google.com/presentation/d/1QegdHyBYc0xT62N5MxzHSMcvAFM0RhW-uezhPkkTVvM/edit?usp=sharing)
