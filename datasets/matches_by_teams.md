@@ -389,3 +389,62 @@ A simple viste se logran apreciar unos fenómenos que deberían ser investigados
 1. Los goles realizados tienen mayores correlaciones en los partidos perdidos, esto por lógica debería ser al revés.
 2. Al igual que el punto anterior, también las correlaciones en las asistencias son mayores en los partidos perdidos.
 3. Tanto las demoliciones realizadas tienen más correlaciones en los partidos ganados, esto tiene más sentido, en especial en las demoliciones realizadas, pero puede ser un factor determinante para el modelo de aprendizaje.
+
+# Elección de modelo
+Para elegir el modelo, en primer lugar debemos recordar que esto se realizará con un modelo de **clasificación** en base a esto, se realizaron pruebas con diferentes modelos, entre ellos:
+- KNC
+- Regresión logística
+- Random Forest
+- SVC
+
+Para esto se evaluaron diferentes métricas con todos los modelos en [classification_model](/classification_model.ipynb), los resultados son los siguientes:
+
+```text
+Modelo: KNeighborsClassifier
+Accuracy: 0.6418121755545069
+Precisión: 0.6389396709323584
+Recall: 0.6575729068673566
+F1: 0.6481223922114048
+
+
+Modelo: LogisticRegression
+Accuracy: 0.7277017461066541
+Precisión: 0.6940894568690096
+Recall: 0.8174976481655691
+F1: 0.7507559395248379
+
+
+Modelo: RandomForestClassifier
+Accuracy: 0.997168475696083
+Precisión: 0.9953139643861293
+Recall: 0.9990592662276576
+F1: 0.9971830985915493
+
+
+Modelo: SVC
+Accuracy: 0.4789995280792827
+Precisión: 0.4861205145565335
+Recall: 0.6754468485418627
+F1: 0.5653543307086615
+```
+
+Se puede ver que realmente la diferencia es nula, por lo tanto se descartará en el modelo elegido
+
+En base a los resultados, podemos tener las primeras conclusiones:
+- En primer lugar podemos descartar el modelo SVC ya que tiene los indicadores más bajos.
+- El modelo de Random Forest en todas las evaluaciones tiene cálculos cercanos al 100%, por ende, podemos decir que tiende al overfitting, y también se descartará.
+- Entre los 2 que quedan, el que tiene mejores números es **LogisticRegression**, por lo tanto se trabajará con el.
+
+## LogisticRegression
+En base a sus resultados, podemos decir lo siguiente:
+- Tiene una buena efectividad, pero debemos recodar que este es solo la punta del iceberg y es un indicador que tiende a engañar un poco.
+- La precisión indica el porcentaje de las predicciones positivas sean correctas, por lo tanto, llevado a este caso indica que de los partidos que el modelo predijo como "partidos ganados" tuvo un **69,4%** de acierto.
+- El recall indica el porcentaje en que el modelo puede predecir resultados positivos, es decir, en este caso se indica que de todos los partidos ganados, acertó un **81,7%**
+- El valor F1 es una combinación entre precisión y recall, ya que en rigor, la precisión busca reducir los falsos positivos y el recall los falsos negativos. En base a esto, podemos decir que el porcentaje de 75,1% de esta métrica sugiere que hay un buen equilibrio entre ambos porcentaje.
+
+Con estas métricas, y solo para mostrar algo más gráfico, se realizará la matriz de confusión de este modelo y la curva AUC-ROC
+
+![Matriz de confusión](/assets/confusion_LogisticRegression.png)
+![Curva AUC-ROC](/assets/curva_AUC_ROC.png)
+
+El gráfico anterior indica que el modelo tiene un buen rendimiento

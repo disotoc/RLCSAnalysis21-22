@@ -23,4 +23,7 @@ Las pruebas utilizadas con modelos de machine learning están en los siguientes 
 - [team_classification](/team_analysis.ipynb)
 
 ---
+La elección del modelo y argumentos está en: [classification_model](/classification_model.ipynb)
+
+---
 Si deseas ver una presentación de este proyecto, puedes revisarlo en [Google Drive](https://docs.google.com/presentation/d/1QegdHyBYc0xT62N5MxzHSMcvAFM0RhW-uezhPkkTVvM/edit?usp=sharing)
