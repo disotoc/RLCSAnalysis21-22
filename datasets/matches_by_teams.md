@@ -440,7 +440,9 @@ En base a sus resultados, podemos decir lo siguiente:
 - Tiene una buena efectividad, pero debemos recodar que este es solo la punta del iceberg y es un indicador que tiende a engañar un poco.
 - La precisión indica el porcentaje de las predicciones positivas sean correctas, por lo tanto, llevado a este caso indica que de los partidos que el modelo predijo como "partidos ganados" tuvo un **69,4%** de acierto.
 - El recall indica el porcentaje en que el modelo puede predecir resultados positivos, es decir, en este caso se indica que de todos los partidos ganados, acertó un **81,7%**
-- El valor F1 es una combinación entre precisión y recall, ya que en rigor, la precisión busca reducir los falsos positivos y el recall los falsos negativos. En base a esto, podemos decir que el porcentaje de 75,1% de esta métrica sugiere que hay un buen equilibrio entre ambos porcentaje.
+- El valor F1 es una combinación entre precisión y recall, ya que en rigor, la precisión busca reducir los falsos positivos y el recall los falsos negativos. En base a esto, podemos decir que el porcentaje de **75,1%** de esta métrica sugiere que hay un buen equilibrio entre ambos porcentaje.
+- La varianza tiene como resultado un **24.2%** lo que sugiere que los valores predichos están relativamente cerca del valor medio.
+- El Bias con un porcentaje de **26.7** indica que los resultados están relativamente cerca del valor real
 
 Con estas métricas, y solo para mostrar algo más gráfico, se realizará la matriz de confusión de este modelo y la curva AUC-ROC
 
