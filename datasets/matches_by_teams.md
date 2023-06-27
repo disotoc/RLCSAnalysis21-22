@@ -450,3 +450,16 @@ Con estas métricas, y solo para mostrar algo más gráfico, se realizará la ma
 ![Curva AUC-ROC](/assets/curva_AUC_ROC.png)
 
 El gráfico anterior indica que el modelo tiene un buen rendimiento
+
+## Cross Validation - Leave One Out Cross-Validation
+Para realizar una validación cruzada en este modelo, se estará ejecutando con Leave One Out Cross-Validation con base en las métricas anteriores, además considerando que la demora es mayor, con ayuda de `%%time` calculamos el tiempo que demora en medir. Los resultados son los siguiente:
+```text
+Modelo: LogisticRegression
+Accuracy promedio: 0.744289220313385
+Precisión promedio: 0.8294317538229187
+Recall promedio: 0.9148574664904663
+F1 promedio: 0.744289220313385
+CPU times: total: 2min 18s
+Wall time: 18min 22s
+```
+Gracias a esto podemos decir que la validación con LOOCV se demora más de 18 minutos por la cantidad de datos. Ahora bien, hay un aumento en todas las métricas exceptuando F1-score, donde realmente es bastante mínimo el cambio, debido a los resultados podemos decir que el modelo funciona de muy buena manera y nos serviría para realizar una predicción de los partidos ganados.
