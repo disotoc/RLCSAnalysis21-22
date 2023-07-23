@@ -15,7 +15,6 @@ Ahora bien, los dataset son datos recogidos de una página especializada en vide
 La limpieza y análisis por datasets separados son los siguientes:
 
 - [matches_by_teams](datasets/matches_by_teams.md)
-- [matches_by_players](datasets/matches_by_players.md)
 
 ---
 Las pruebas utilizadas con modelos de machine learning están en los siguientes archivos
@@ -26,4 +25,4 @@ Las pruebas utilizadas con modelos de machine learning están en los siguientes 
 La elección del modelo y argumentos está en: [classification_model](/classification_model.ipynb)
 
 ---
-Si deseas ver una presentación de este proyecto, puedes revisarlo en [Google Drive](https://docs.google.com/presentation/d/1QegdHyBYc0xT62N5MxzHSMcvAFM0RhW-uezhPkkTVvM/edit?usp=sharing)
+Si deseas ver una presentación de este proyecto, puedes revisarlo en [Presentación](/assets/Proyecto_clasificacion_de_partidos_RocketLeague.pdf)
